@@ -7,7 +7,7 @@ let exams = [
 ];
 
 router.get('/exam-group', (req, res) => {
-  res.json({ message: 'Group indolence API' });
+  res.json({ message: 'Group H API' });
 });
 
 
