@@ -1,11 +1,4 @@
-const express = require('express');
-const router = express.Router();
 
-router.get('/exam-group', (req, res) => {
-  res.json({ message: 'Group <indolence> API' });
-});
-
-module.exports = router;
 
 const express = require('express');
 const router = express.Router();
@@ -27,3 +20,18 @@ router.post('/exams', (req, res) => {
   exams.push(newExam);
   res.status(201).json({ message: 'Exam added', exam: newExam });
 });
+
+
+router.put('/exams/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedExam = req.body;
+    let examIndex = exams.findIndex(e => e.id == id);
+  
+    if (examIndex !== -1) {
+      exams[examIndex] = { ...exams[examIndex], ...updatedExam };
+      res.json({ message: 'Exam updated', exam: exams[examIndex] });
+    } else {
+      res.status(404).json({ message: 'Exam not found' });
+    }
+  });
+  
