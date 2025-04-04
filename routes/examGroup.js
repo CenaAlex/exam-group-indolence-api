@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/exam-group', (req, res) => {
-  res.json({ message: 'Group <Group H> API' });
+  res.json({ message: 'Group <indolence> API' });
 });
 
 module.exports = router;
@@ -20,3 +20,10 @@ router.get('/exam-group', (req, res) => {
 
 module.exports = router;
 
+let exams = [];
+
+router.post('/exams', (req, res) => {
+  const newExam = req.body;
+  exams.push(newExam);
+  res.status(201).json({ message: 'Exam added', exam: newExam });
+});
